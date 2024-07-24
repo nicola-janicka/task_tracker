@@ -1,0 +1,10 @@
+<div>
+  <table>
+    <tr *ngFor="let task of tasks | keyvalue">
+      {{
+        task.key
+      }}
+      <input type="checkbox" [checked]="task.value" />
+    </tr>
+  </table>
+</div>
