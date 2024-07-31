@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Status</th>
+    <th>Deadline</th>
+    <th>Action</th>
+  </tr>
+  <tr class="task-row" *ngFor="let task of tasks">
+    <td>
+      {{ task.name }}
+    </td>
+    <td>
+      {{ task.status }}
+    </td>
+    <td>
+      {{ unixToDate(task.deadline) }}
+    </td>
+    <td>Delete</td>
+  </tr>
+</table>

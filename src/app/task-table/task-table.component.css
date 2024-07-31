@@ -1,0 +1,11 @@
+tr {
+  border-bottom: 1px solid #ddd;
+}
+.task-row:hover {
+  background-color: #d6eeee;
+}
+
+th,
+td {
+  padding: 15px;
+}
