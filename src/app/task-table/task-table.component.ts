@@ -27,4 +27,7 @@ export class TaskTableComponent {
     // Return the formatted date string
     return `${year}-${month}-${day} `;
   }
+  deleteTask(id: number) {
+    this.tasks.splice(id, 1);
+  }
 }

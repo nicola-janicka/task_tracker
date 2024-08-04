@@ -5,7 +5,7 @@
     <th>Deadline</th>
     <th>Action</th>
   </tr>
-  <tr class="task-row" *ngFor="let task of tasks">
+  <tr class="task-row" *ngFor="let task of tasks; index as i">
     <td>
       {{ task.name }}
     </td>
@@ -15,6 +15,6 @@
     <td>
       {{ unixToDate(task.deadline) }}
     </td>
-    <td>Delete</td>
+    <td><button (click)="deleteTask(i)">Delete</button></td>
   </tr>
 </table>
