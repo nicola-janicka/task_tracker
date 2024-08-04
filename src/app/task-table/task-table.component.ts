@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { Task } from '../task';
 import { NgFor } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-task-table',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, MatIconModule, MatDividerModule, MatButtonModule],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css',
 })
@@ -29,5 +32,9 @@ export class TaskTableComponent {
   }
   deleteTask(id: number) {
     this.tasks.splice(id, 1);
+  }
+
+  createNewTask() {
+    this.tasks.push(new Task('Task', 'To do', 1722958199));
   }
 }

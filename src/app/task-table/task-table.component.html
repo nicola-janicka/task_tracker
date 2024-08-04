@@ -1,3 +1,7 @@
+<button (click)="createNewTask()" mat-fab extended>
+  <mat-icon>add</mat-icon>
+  New Task
+</button>
 <table>
   <tr>
     <th>Task</th>
@@ -15,6 +19,14 @@
     <td>
       {{ unixToDate(task.deadline) }}
     </td>
-    <td><button (click)="deleteTask(i)">Delete</button></td>
+    <td>
+      <button
+        (click)="deleteTask(i)"
+        mat-mini-fab
+        aria-label="Icon button with a delete icon"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
   </tr>
 </table>
