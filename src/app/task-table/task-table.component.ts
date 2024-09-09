@@ -17,11 +17,12 @@ import { NewTaskFormComponent } from '../new-task-form/new-task-form.component';
 export class TaskTableComponent {
   name: string = '';
   status: string = '';
+  deadline: Date = new Date();
 
   tasks = [
-    new Task('Task1', 'To do', 1722448188),
-    new Task('Task2', 'In progress', 1722446188),
-    new Task('Task3', 'Done', 1722445188),
+    new Task('Task1', 'To do', new Date(1722448188000)),
+    new Task('Task2', 'In progress', new Date(1722446188000)),
+    new Task('Task3', 'Done', new Date(1722445188000)),
   ];
 
   constructor(public dialog: MatDialog) {}
@@ -29,18 +30,22 @@ export class TaskTableComponent {
   openDialog(): void {
     let dialogRef = this.dialog.open(NewTaskFormComponent, {
       width: '250px',
-      data: { taskName: this.name, taskStatus: this.status },
+      data: {
+        taskName: this.name,
+        taskStatus: this.status,
+        taskDeadline: this.deadline,
+      },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.tasks.push(new Task(result.taskName, result.taskStatus, 1722958199));
+      result.taskDeadline.getMilliseconds();
+      this.tasks.push(
+        new Task(result.taskName, result.taskStatus, result.taskDeadline)
+      );
+      console.log(result.taskDeadline);
     });
   }
 
-  unixToDate(unixTimestamp: number): string {
-    // Create a new Date object using the Unix timestamp multiplied by 1000 (to convert from seconds to milliseconds)
-    const date = new Date(unixTimestamp * 1000);
-
-    // Extract date components and format as desired
+  dateToString(date: Date): string {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed, so add 1
     const day = date.getDate().toString().padStart(2, '0');
@@ -48,11 +53,24 @@ export class TaskTableComponent {
     // Return the formatted date string
     return `${year}-${month}-${day} `;
   }
+
+  // unixToDate(unixTimestamp: number): string {
+  //   // Create a new Date object using the Unix timestamp multiplied by 1000 (to convert from seconds to milliseconds)
+  //   const date = new Date(unixTimestamp * 1000);
+
+  //   // Extract date components and format as desired
+  //   const year = date.getFullYear();
+  //   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed, so add 1
+  //   const day = date.getDate().toString().padStart(2, '0');
+
+  //   // Return the formatted date string
+  //   return `${year}-${month}-${day} `;
+  // }
   deleteTask(id: number) {
     this.tasks.splice(id, 1);
   }
 
   createNewTask() {
-    this.tasks.push(new Task('Task', 'To do', 1722958199));
+    this.tasks.push(new Task('Task', 'To do', new Date(1722958199000)));
   }
 }
