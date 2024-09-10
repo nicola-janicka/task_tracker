@@ -6,8 +6,12 @@
     <input matInput [(ngModel)]="data.taskName" />
   </mat-form-field>
   <mat-form-field>
-    <label>Status</label>
-    <input matInput [(ngModel)]="data.taskStatus" />
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="data.taskStatus" name="status">
+      @for (status of statuses; track status) {
+      <mat-option [value]="status.viewValue">{{ status.viewValue }}</mat-option>
+      }
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
     <label>Choose a date</label>

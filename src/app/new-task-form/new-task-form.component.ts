@@ -9,6 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
+interface Status {
+  value: number;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-new-task-form',
@@ -19,6 +25,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatDialogModule,
     MatInputModule,
     MatDatepickerModule,
+    MatSelectModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './new-task-form.component.html',
@@ -33,4 +40,10 @@ export class NewTaskFormComponent {
   onCancel(): void {
     this.dialogRef.close();
   }
+  statuses: Status[] = [
+    { value: 0, viewValue: 'To do' },
+    { value: 1, viewValue: 'In progress' },
+    { value: 2, viewValue: 'Done' },
+    { value: 3, viewValue: 'On hold' },
+  ];
 }

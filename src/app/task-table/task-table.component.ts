@@ -42,6 +42,7 @@ export class TaskTableComponent {
         new Task(result.taskName, result.taskStatus, result.taskDeadline)
       );
       console.log(result.taskDeadline);
+      console.log(result.taskStatus);
     });
   }
 
