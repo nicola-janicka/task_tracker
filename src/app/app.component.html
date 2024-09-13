@@ -176,7 +176,29 @@
     }
   }
 </style>
-<app-login-page></app-login-page>
-<app-task-table></app-task-table>
 
-<router-outlet />
+<h1>Angular Router App</h1>
+<nav>
+  <ul>
+    <li>
+      <a
+        routerLink="/app-task-table"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Task table</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/app-login-page"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Login page</a
+      >
+    </li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
+<!-- <app-login-page></app-login-page>
+<app-task-table></app-task-table> -->
