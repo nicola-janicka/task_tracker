@@ -32,6 +32,8 @@ export class AppComponent {
     if (localStorage.getItem('logged') === null) {
       this.router.navigate(['/login-page']);
       console.log('works');
+    } else {
+      this.router.navigate(['/task-table']);
     }
   }
 }
