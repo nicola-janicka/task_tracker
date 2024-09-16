@@ -1,6 +1,11 @@
 import { TasksComponent } from './tasks/tasks.component';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { TaskTableComponent } from './task-table/task-table.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CommonModule } from '@angular/common';
@@ -22,4 +27,11 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'task_tracker';
+
+  constructor(private router: Router) {
+    if (localStorage.getItem('logged') === null) {
+      this.router.navigate(['/login-page']);
+      console.log('works');
+    }
+  }
 }
