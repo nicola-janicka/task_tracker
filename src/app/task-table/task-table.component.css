@@ -9,3 +9,11 @@ th,
 td {
   padding: 15px;
 }
+
+.tasks-list {
+  max-width: fit-content;
+  margin-left: 1%;
+  margin-right: auto;
+  max-height: fit-content;
+  margin-top: 1%;
+}

@@ -1,32 +1,34 @@
-<button (click)="openDialog()" mat-fab extended>
-  <mat-icon>add</mat-icon>
-  New Task
-</button>
-<table>
-  <tr>
-    <th>Task</th>
-    <th>Status</th>
-    <th>Deadline</th>
-    <th>Action</th>
-  </tr>
-  <tr class="task-row" *ngFor="let task of tasks; index as i">
-    <td>
-      {{ task.name }}
-    </td>
-    <td>
-      {{ task.status }}
-    </td>
-    <td>
-      {{ dateToString(task.deadline) }}
-    </td>
-    <td>
-      <button
-        (click)="deleteTask(i)"
-        mat-mini-fab
-        aria-label="Icon button with a delete icon"
-      >
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </tr>
-</table>
+<div class="tasks-list">
+  <button (click)="openDialog()" mat-fab extended>
+    <mat-icon>add</mat-icon>
+    New Task
+  </button>
+  <table>
+    <tr>
+      <th>Task</th>
+      <th>Status</th>
+      <th>Deadline</th>
+      <th>Action</th>
+    </tr>
+    <tr class="task-row" *ngFor="let task of tasks; index as i">
+      <td>
+        {{ task.name }}
+      </td>
+      <td>
+        {{ task.status }}
+      </td>
+      <td>
+        {{ dateToString(task.deadline) }}
+      </td>
+      <td>
+        <button
+          (click)="deleteTask(i)"
+          mat-mini-fab
+          aria-label="Icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

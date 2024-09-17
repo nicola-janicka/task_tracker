@@ -4,6 +4,9 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TaskTableComponent } from '../task-table/task-table.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatInput } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login-page',
@@ -15,6 +18,9 @@ import { Router } from '@angular/router';
     CommonModule,
     RouterLink,
     RouterLinkActive,
+    MatInput,
+    MatFormFieldModule,
+    MatButtonModule,
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',
