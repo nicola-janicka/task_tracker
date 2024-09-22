@@ -8,6 +8,9 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import axios from 'axios';
+import { __awaiter } from 'tslib';
+import * as usersdata from '../../usersdata.json';
 
 @Component({
   selector: 'app-login-page',
@@ -32,16 +35,34 @@ export class LoginPageComponent {
   username = '';
   password = '';
 
-  adminUser: string = 'nicola';
-  adminPass: string = 'alocin';
-
   private _snackBar = inject(MatSnackBar);
+
   onSubmit() {
-    if (this.username === this.adminUser && this.password === this.adminPass) {
+    console.log(isUserCorrect(this.username, this.password));
+    if (isUserCorrect(this.username, this.password)) {
       localStorage.setItem('logged', 'true');
       this.router.navigate(['/task-table']);
     } else {
       this._snackBar.open('login or password is incorrect', 'OK');
     }
   }
+}
+
+function isUserCorrect(username: string, password: string): boolean {
+  // try {
+  //   const response = await axios.get('./usersdata.json');
+  //   const users = response.data;
+  //   console.log(users);
+  // } catch (error) {
+  //   console.error(error);
+  // }
+
+  let correct: boolean = false;
+  usersdata.users.forEach((user) => {
+    if (username === user.login && password === user.password) {
+      console.log(user);
+      correct = true;
+    }
+  });
+  return correct;
 }
