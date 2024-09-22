@@ -29,8 +29,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginPageComponent {
   constructor(private router: Router) {}
-  username: string = '';
-  password: string = '';
+  username = '';
+  password = '';
 
   adminUser: string = 'nicola';
   adminPass: string = 'alocin';
@@ -40,8 +40,8 @@ export class LoginPageComponent {
     if (this.username === this.adminUser && this.password === this.adminPass) {
       localStorage.setItem('logged', 'true');
       this.router.navigate(['/task-table']);
+    } else {
+      this._snackBar.open('login or password is incorrect', 'OK');
     }
-
-    this._snackBar.open('login or password is incorrect', 'OK');
   }
 }
