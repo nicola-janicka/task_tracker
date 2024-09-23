@@ -41,6 +41,10 @@ export class LoginPageComponent {
     console.log(isUserCorrect(this.username, this.password));
     if (isUserCorrect(this.username, this.password)) {
       localStorage.setItem('logged', 'true');
+      localStorage.setItem(
+        'loggedUser',
+        loggedUserID(this.username, this.password)
+      );
       this.router.navigate(['/task-table']);
     } else {
       this._snackBar.open('login or password is incorrect', 'OK');
@@ -49,20 +53,30 @@ export class LoginPageComponent {
 }
 
 function isUserCorrect(username: string, password: string): boolean {
-  // try {
-  //   const response = await axios.get('./usersdata.json');
-  //   const users = response.data;
-  //   console.log(users);
-  // } catch (error) {
-  //   console.error(error);
-  // }
-
-  let correct: boolean = false;
+  let isCorrect: boolean = false;
   usersdata.users.forEach((user) => {
     if (username === user.login && password === user.password) {
       console.log(user);
-      correct = true;
+      isCorrect = true;
     }
   });
-  return correct;
+  return isCorrect;
 }
+
+function loggedUserID(username: string, password: string): any {
+  let userID: any = '';
+  usersdata.users.forEach((user) => {
+    if (username === user.login && password === user.password) {
+      userID = user.id;
+    }
+  });
+  return userID;
+}
+
+// try {
+//   const response = await axios.get('./usersdata.json');
+//   const users = response.data;
+//   console.log(users);
+// } catch (error) {
+//   console.error(error);
+// }
