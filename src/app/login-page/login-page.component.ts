@@ -38,45 +38,28 @@ export class LoginPageComponent {
   private _snackBar = inject(MatSnackBar);
 
   onSubmit() {
-    console.log(isUserCorrect(this.username, this.password));
-    if (isUserCorrect(this.username, this.password)) {
-      localStorage.setItem('logged', 'true');
+    try {
       localStorage.setItem(
-        'loggedUser',
-        loggedUserID(this.username, this.password)
+        'logged',
+        getUser(this.username, this.password).toString()
       );
       this.router.navigate(['/task-table']);
-    } else {
+    } catch (error) {
       this._snackBar.open('login or password is incorrect', 'OK');
     }
   }
 }
 
-function isUserCorrect(username: string, password: string): boolean {
-  let isCorrect: boolean = false;
+function getUser(username: string, password: string): number {
+  let foundUser: any = null;
   usersdata.users.forEach((user) => {
     if (username === user.login && password === user.password) {
-      console.log(user);
-      isCorrect = true;
+      foundUser = user.id;
     }
   });
-  return isCorrect;
+  if (foundUser === null) {
+    throw new Error('user not found');
+  } else {
+    return foundUser;
+  }
 }
-
-function loggedUserID(username: string, password: string): any {
-  let userID: any = '';
-  usersdata.users.forEach((user) => {
-    if (username === user.login && password === user.password) {
-      userID = user.id;
-    }
-  });
-  return userID;
-}
-
-// try {
-//   const response = await axios.get('./usersdata.json');
-//   const users = response.data;
-//   console.log(users);
-// } catch (error) {
-//   console.error(error);
-// }
