@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "login": "nicola",
+      "password": "alocin",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Task 1",
+          "status": "To do",
+          "deadline": 1722448188000
+        },
+        {
+          "id": 1,
+          "name": "Task 2",
+          "status": "In progress",
+          "deadline": 1722446188000
+        },
+        {
+          "id": 2,
+          "name": "Task 3",
+          "status": "Done",
+          "deadline": 1722445188000
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "login": "michal",
+      "password": "lachim",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Task 1",
+          "status": "To do",
+          "deadline": 172247899000
+        }
+      ]
+    }
+  ]
+}

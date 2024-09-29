@@ -8,7 +8,6 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import axios from 'axios';
 import { __awaiter } from 'tslib';
 import * as usersdata from '../../usersdata.json';
 
@@ -37,12 +36,10 @@ export class LoginPageComponent {
 
   private _snackBar = inject(MatSnackBar);
 
-  onSubmit() {
+  async onSubmit() {
     try {
-      localStorage.setItem(
-        'logged',
-        getUser(this.username, this.password).toString()
-      );
+      const userID = await getUser(this.username, this.password);
+      localStorage.setItem('logged', userID.toString());
       this.router.navigate(['/task-table']);
     } catch (error) {
       this._snackBar.open('login or password is incorrect', 'OK');
@@ -50,13 +47,19 @@ export class LoginPageComponent {
   }
 }
 
-function getUser(username: string, password: string): number {
+async function getUser(username: string, password: string): Promise<number> {
+  const responseFromDB = await fetch('http://localhost:3000/users', {
+    method: 'GET',
+  });
+  const jsonResponse = await responseFromDB.json();
   let foundUser: any = null;
-  usersdata.users.forEach((user) => {
+  jsonResponse.forEach((user: any) => {
     if (username === user.login && password === user.password) {
       foundUser = user.id;
+      console.log(foundUser);
     }
   });
+
   if (foundUser === null) {
     throw new Error('user not found');
   } else {
