@@ -19,11 +19,7 @@ export class TaskTableComponent {
   status: string = '';
   deadline: Date = new Date();
 
-  tasks = [
-    new Task('Task1', 'To do', new Date(1722448188000)),
-    new Task('Task2', 'In progress', new Date(1722446188000)),
-    new Task('Task3', 'Done', new Date(1722445188000)),
-  ];
+  tasks = getTasks();
 
   constructor(public dialog: MatDialog) {}
 
@@ -51,22 +47,9 @@ export class TaskTableComponent {
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed, so add 1
     const day = date.getDate().toString().padStart(2, '0');
 
-    // Return the formatted date string
     return `${year}-${month}-${day} `;
   }
 
-  // unixToDate(unixTimestamp: number): string {
-  //   // Create a new Date object using the Unix timestamp multiplied by 1000 (to convert from seconds to milliseconds)
-  //   const date = new Date(unixTimestamp * 1000);
-
-  //   // Extract date components and format as desired
-  //   const year = date.getFullYear();
-  //   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed, so add 1
-  //   const day = date.getDate().toString().padStart(2, '0');
-
-  //   // Return the formatted date string
-  //   return `${year}-${month}-${day} `;
-  // }
   deleteTask(id: number) {
     this.tasks.splice(id, 1);
   }
@@ -74,4 +57,17 @@ export class TaskTableComponent {
   createNewTask() {
     this.tasks.push(new Task('Task', 'To do', new Date(1722958199000)));
   }
+}
+
+async function getTasks(): Promise<Array<Task>> {
+  let responseFromDB = await fetch(
+    'http://localhost:3000/users?id=' + localStorage.getItem('logged')
+  );
+  let tasksArray: Array<Task> = [];
+  let userFromDB = await responseFromDB.json();
+  userFromDB.tasks.forEach((task: any) => {
+    let parsedTask = new Task(task.name, task.status, new Date(task.deadline));
+    tasksArray.push(parsedTask);
+  });
+  return tasksArray;
 }
