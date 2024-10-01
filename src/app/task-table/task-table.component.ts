@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { NewTaskFormComponent } from '../new-task-form/new-task-form.component';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-task-table',
@@ -19,9 +20,17 @@ export class TaskTableComponent {
   status: string = '';
   deadline: Date = new Date();
 
-  tasks = getTasks();
+  tasks: Array<Task> = [];
+  taskPromise = getTasks();
 
-  constructor(public dialog: MatDialog) {}
+  taskObservable = from(this.taskPromise);
+
+  constructor(public dialog: MatDialog) {
+    this.taskObservable.subscribe((value: any) => {
+      this.tasks = value;
+      console.log(value);
+    });
+  }
 
   openDialog(): void {
     let dialogRef = this.dialog.open(NewTaskFormComponent, {
@@ -65,7 +74,8 @@ async function getTasks(): Promise<Array<Task>> {
   );
   let tasksArray: Array<Task> = [];
   let userFromDB = await responseFromDB.json();
-  userFromDB.tasks.forEach((task: any) => {
+  console.log(userFromDB);
+  userFromDB[0].tasks.forEach((task: any) => {
     let parsedTask = new Task(task.name, task.status, new Date(task.deadline));
     tasksArray.push(parsedTask);
   });
