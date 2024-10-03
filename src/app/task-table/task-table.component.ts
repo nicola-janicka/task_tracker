@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { NewTaskFormComponent } from '../new-task-form/new-task-form.component';
 import { from } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-task-table',
@@ -28,17 +28,15 @@ export class TaskTableComponent {
   status: string = '';
   deadline: Date = new Date();
 
-  tasks: Array<Task> = [];
+  tasks: Task[] = [];
   // taskPromise = getTasks();
 
   // taskObservable = from(this.taskPromise);
 
-  taskObservable = this.getTasks();
-
-  constructor(public dialog: MatDialog, public taskService: TaskService) {
-    this.taskObservable.subscribe((value: any) => {
+  constructor(private dialog: MatDialog, private taskService: TaskService) {
+    this.taskService.getTasks2().subscribe((value: any) => {
       this.tasks = value;
-      console.log(value);
+      console.log("Tasks:", value);
     });
   }
 
@@ -76,12 +74,8 @@ export class TaskTableComponent {
   createNewTask() {
     this.tasks.push(new Task('Task', 'To do', new Date(1722958199000)));
   }
-
-  // HTTP Client
-  getTasks() {
-    return this.taskService.getTasks2();
-  }
 }
+
 // ASYNc/AWAIT:
 // async function getTasks(): Promise<Array<Task>> {
 //   let responseFromDB = await fetch(
