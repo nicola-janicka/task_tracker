@@ -1,3 +1,4 @@
+import { TaskService } from './../taskService';
 import { Component } from '@angular/core';
 import { Task } from '../task';
 import { NgFor } from '@angular/common';
@@ -7,11 +8,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { NewTaskFormComponent } from '../new-task-form/new-task-form.component';
 import { from } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-task-table',
   standalone: true,
-  imports: [NgFor, MatIconModule, MatDividerModule, MatButtonModule],
+  imports: [
+    NgFor,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    HttpClientModule,
+  ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css',
 })
@@ -21,11 +29,13 @@ export class TaskTableComponent {
   deadline: Date = new Date();
 
   tasks: Array<Task> = [];
-  taskPromise = getTasks();
+  // taskPromise = getTasks();
 
-  taskObservable = from(this.taskPromise);
+  // taskObservable = from(this.taskPromise);
 
-  constructor(public dialog: MatDialog) {
+  taskObservable = this.getTasks();
+
+  constructor(public dialog: MatDialog, public taskService: TaskService) {
     this.taskObservable.subscribe((value: any) => {
       this.tasks = value;
       console.log(value);
@@ -66,18 +76,23 @@ export class TaskTableComponent {
   createNewTask() {
     this.tasks.push(new Task('Task', 'To do', new Date(1722958199000)));
   }
-}
 
-async function getTasks(): Promise<Array<Task>> {
-  let responseFromDB = await fetch(
-    'http://localhost:3000/users?id=' + localStorage.getItem('logged')
-  );
-  let tasksArray: Array<Task> = [];
-  let userFromDB = await responseFromDB.json();
-  console.log(userFromDB);
-  userFromDB[0].tasks.forEach((task: any) => {
-    let parsedTask = new Task(task.name, task.status, new Date(task.deadline));
-    tasksArray.push(parsedTask);
-  });
-  return tasksArray;
+  // HTTP Client
+  getTasks() {
+    return this.taskService.getTasks2();
+  }
 }
+// ASYNc/AWAIT:
+// async function getTasks(): Promise<Array<Task>> {
+//   let responseFromDB = await fetch(
+//     'http://localhost:3000/users?id=' + localStorage.getItem('logged')
+//   ); //spróbować jeszcze z users/, u Marcina działa jak usunie się z db.json contacts
+//   let tasksArray: Array<Task> = [];
+//   let userFromDB = await responseFromDB.json();
+//   console.log(userFromDB);
+//   userFromDB[0].tasks.forEach((task: any) => {
+//     let parsedTask = new Task(task.name, task.status, new Date(task.deadline));
+//     tasksArray.push(parsedTask);
+//   });
+//   return tasksArray;
+// }
