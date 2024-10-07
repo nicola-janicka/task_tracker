@@ -1,19 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from "rxjs";
+import { map, Observable } from 'rxjs';
 import { Task } from './task';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-
   constructor(private http: HttpClient) {}
 
   getTasks2(): Observable<Task[]> {
-    return this.http.get('http://localhost:3000/users?id=0')
-      .pipe(
-        map((data: any) => this.getTasksFromResponse(data)));
+    return this.http
+      .get('http://localhost:3000/users?id=' + localStorage.getItem('logged'))
+      .pipe(map((data: any) => this.getTasksFromResponse(data)));
   }
 
   private getTasksFromResponse(data: any) {
