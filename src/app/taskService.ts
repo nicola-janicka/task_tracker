@@ -11,19 +11,25 @@ export class TaskService {
 
   getTasks2(): Observable<Task[]> {
     return this.http
-      .get('http://localhost:3000/users?id=' + localStorage.getItem('logged'))
+      .get(
+        'http://localhost:3000/tasks?userID=' + localStorage.getItem('logged')
+      )
       .pipe(map((data: any) => this.getTasksFromResponse(data)));
   }
 
-  private getTasksFromResponse(data: any) {
-    return data.flatMap((person: any) => this.getTasksFromPerson(person));
-  }
+  // private getTasksFromResponse(data: any) {
+  //   return data.flatMap((person: any) => this.getTasksFromPerson(person));
+  // }
 
-  private getTasksFromPerson(person: any) {
-    return person.tasks.map((task: any) => this.createNewTask(task));
+  private getTasksFromResponse(data: any) {
+    return data.map((task: any) => this.createNewTask(task));
   }
 
   private createNewTask(task: any) {
     return new Task(task.name, task.status, new Date(task.deadline));
   }
+
+  // deleteTask(taskID: number) {
+  //   this.http.delete('http://localhost:3000/users/)
+  // }
 }
