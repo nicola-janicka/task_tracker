@@ -73,13 +73,10 @@ export class TaskTableComponent {
   }
 
   deleteTask(id: number, i: number) {
-    this.tasks.splice(i);
     this.taskService.deleteTask(id).subscribe((data) => {
       console.log('success');
     });
-    console.log(this.tasks);
-
-    console.log(this.tasks);
+    this.tasks.splice(i);
   }
 
   createNewTask() {
