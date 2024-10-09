@@ -36,7 +36,7 @@ export class TaskTableComponent {
   constructor(private dialog: MatDialog, private taskService: TaskService) {
     this.taskService.getTasks2().subscribe((value: any) => {
       this.tasks = value;
-      console.log("Tasks:", value);
+      console.log('Tasks:', value);
     });
   }
 
@@ -52,7 +52,12 @@ export class TaskTableComponent {
     dialogRef.afterClosed().subscribe((result) => {
       result.taskDeadline.getMilliseconds();
       this.tasks.push(
-        new Task(result.taskName, result.taskStatus, result.taskDeadline)
+        new Task(
+          result.id,
+          result.taskName,
+          result.taskStatus,
+          result.taskDeadline
+        )
       );
       console.log(result.taskDeadline);
       console.log(result.taskStatus);
@@ -67,12 +72,19 @@ export class TaskTableComponent {
     return `${year}-${month}-${day} `;
   }
 
-  deleteTask(id: number) {
-    this.tasks.splice(id, 1);
+  deleteTask(id: number, i: number) {
+    this.tasks.splice(i);
+    this.taskService.deleteTask(id).subscribe((data) => {
+      console.log('success');
+    });
+    console.log(this.tasks);
+
+    console.log(this.tasks);
   }
 
   createNewTask() {
-    this.tasks.push(new Task('Task', 'To do', new Date(1722958199000)));
+    // this.tasks.push(new Task('Task', 'To do', new Date(1722958199000)));
+    console.log('Hello');
   }
 }
 

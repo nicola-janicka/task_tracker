@@ -26,10 +26,12 @@ export class TaskService {
   }
 
   private createNewTask(task: any) {
-    return new Task(task.name, task.status, new Date(task.deadline));
+    return new Task(task.id, task.name, task.status, new Date(task.deadline));
   }
 
-  // deleteTask(taskID: number) {
-  //   this.http.delete('http://localhost:3000/users/)
-  // }
+  // USUWANIE ZADAŃ:
+
+  deleteTask(taskID: number): Observable<any> {
+    return this.http.delete('http://localhost:3000/tasks/' + taskID);
+  }
 }
