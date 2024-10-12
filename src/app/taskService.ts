@@ -34,4 +34,31 @@ export class TaskService {
   deleteTask(taskID: number): Observable<any> {
     return this.http.delete('http://localhost:3000/tasks/' + taskID);
   }
+
+  addTask(name: string, status: string, deadline: number): Observable<any> {
+    let task = {
+      name: name,
+      status: status,
+      deadline: deadline,
+      userID: localStorage.getItem('logged'),
+    };
+    let jsonTask = JSON.stringify(task);
+    return this.http.post('http://localhost:3000/tasks', jsonTask);
+  }
 }
+
+// tasks = Task[(task1, task2, task3)];
+
+// function sortTasks(tasks: Task[]): Task[] {
+//   let newTasks: Task[] = [];
+//   tasks.forEach((task) => {
+//     if (task.status === 'to do') {
+//       newTasks.unshift(task);
+//     } else {
+//       newTasks.push(task);
+//     }
+//   });
+//   return newTasks;
+// }
+
+// tasks = sortTasks(tasks);
