@@ -49,19 +49,23 @@ export class TaskTableComponent {
         taskDeadline: this.deadline,
       },
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      result.taskDeadline.getMilliseconds();
-      this.tasks.push(
-        new Task(
-          result.id,
-          result.taskName,
-          result.taskStatus,
-          result.taskDeadline
-        )
-      );
-      console.log(result.taskDeadline);
-      console.log(result.taskStatus);
-    });
+    dialogRef.afterClosed().subscribe(
+      (result) => {
+        result.taskDeadline.getMilliseconds();
+        this.taskService
+          .addTask(result.taskName, result.taskStatus, result.taskDeadline)
+          .subscribe((response) => {});
+      }
+
+      // this.tasks.push(
+      //   new Task(
+      //     result.id,
+      //     result.taskName,
+      //     result.taskStatus,
+      //     result.taskDeadline
+      //   )
+      // );
+    );
   }
 
   dateToString(date: Date): string {
