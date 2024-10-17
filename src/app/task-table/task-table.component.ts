@@ -55,6 +55,10 @@ export class TaskTableComponent {
         this.taskService
           .addTask(result.taskName, result.taskStatus, result.taskDeadline)
           .subscribe((response) => {});
+        this.taskService.getTasks2().subscribe((value: any) => {
+          this.tasks = value;
+          console.log('Tasks:', value);
+        });
       }
 
       // this.tasks.push(
