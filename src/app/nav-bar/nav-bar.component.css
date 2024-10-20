@@ -1,0 +1,17 @@
+.grey-color {
+  color: grey;
+  background-color: lightgray;
+}
+
+.logoutbutton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.logoutbutton:hover {
+  background-color: #303f9f;
+}
