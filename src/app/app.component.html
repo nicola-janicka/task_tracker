@@ -188,7 +188,10 @@
     </li>
   </ul>
 </nav>
+
 <!-- The routed views render in the <router-outlet>-->
+
+<app-nav-bar *ngIf="showNavBar" />
 <router-outlet></router-outlet>
 <!-- <app-login-page></app-login-page>
 <app-task-table></app-task-table> -->
