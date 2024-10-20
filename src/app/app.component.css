@@ -1,0 +1,16 @@
+html,
+body,
+app-root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+app-nav-bar {
+  margin-bottom: 60px; /* Dodaje 20px przestrzeni pod paskiem nawigacji */
+}
+
+router-outlet {
+  display: block; /* Jeśli potrzebne, upewnij się, że router-outlet zajmuje miejsce */
+  margin-top: 60px; /* Dodaje 20px przestrzeni nad zawartością */
+}

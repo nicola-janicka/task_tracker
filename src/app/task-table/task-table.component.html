@@ -1,4 +1,4 @@
-<div class="tasks-list">
+<!-- <div class="tasks-list">
   <button (click)="openDialog()" mat-fab extended>
     <mat-icon>add</mat-icon>
     New Task
@@ -30,5 +30,37 @@
         </button>
       </td>
     </tr>
+  </table>
+</div> -->
+<div class="tasks-list">
+  <button (click)="openDialog()" mat-fab extended>
+    <mat-icon>add</mat-icon>
+    New Task
+  </button>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Status</th>
+        <th>Deadline</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="task-row" *ngFor="let task of tasks; index as i">
+        <td class="task-name">{{ task.name }}</td>
+        <td class="task-status">{{ task.status }}</td>
+        <td class="task-deadline">{{ dateToString(task.deadline) }}</td>
+        <td class="task-action">
+          <button
+            (click)="deleteTask(task.id, i)"
+            mat-mini-fab
+            aria-label="Icon button with a delete icon"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>

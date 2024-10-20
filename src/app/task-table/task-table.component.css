@@ -1,4 +1,4 @@
-tr {
+/* tr {
   border-bottom: 1px solid #ddd;
 }
 .task-row:hover {
@@ -16,4 +16,94 @@ td {
   margin-right: auto;
   max-height: fit-content;
   margin-top: 1%;
+} */
+
+/* General styles for the tasks list */
+.tasks-list {
+  margin: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+button[mat-fab] {
+  background-color: #4caf50;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Table Styles */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 18px;
+  min-width: 400px;
+}
+
+.styled-table thead tr {
+  background-color: #f3f4f6;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f4f6;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Task Name */
+.task-name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.task-name::before {
+  content: "📝"; /* Placeholder icon, adjust for task type */
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+/* Status styling */
+.task-status {
+  color: #4caf50;
+}
+
+/* Deadline */
+.task-deadline {
+  color: #888888;
+}
+
+/* Action button */
+.task-action button {
+  background-color: #f44336;
+  color: white;
+}
+
+.task-action button mat-icon {
+  font-size: 20px;
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 600px) {
+  .styled-table th,
+  .styled-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
 }
