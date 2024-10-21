@@ -1,3 +1,4 @@
+import { userService } from './../userService';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,12 +13,16 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
-  constructor(private router: Router) {}
+  userLogin: string = '';
+  constructor(private router: Router, private userService: userService) {
+    this.userService.getUser().subscribe((data) => {
+      console.log(data.name);
+      this.userLogin = data.name;
+    });
+  }
 
   logOutUser() {
     this.router.navigate(['/login-page']);
     localStorage.removeItem('logged');
   }
-
-  showUserLogin() {}
 }

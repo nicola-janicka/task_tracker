@@ -1,13 +1,8 @@
 <div class="main-nav-div">
-  <div class="show-username">Hello</div>
   <div><mat-icon>account_circle</mat-icon></div>
+  <div class="show-username">Hello, {{ userLogin }}</div>
 
-  <button
-    class="grey-color logoutbutton"
-    (click)="logOutUser()"
-    mat-fab
-    extended
-  >
+  <button class="logoutbutton" (click)="logOutUser()" mat-fab extended>
     <mat-icon>logout</mat-icon>Log out
   </button>
 </div>

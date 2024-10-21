@@ -1,8 +1,3 @@
-.grey-color {
-  color: grey;
-  background-color: lightgray;
-}
-
 .main-nav-div {
   position: fixed;
   top: 0;
@@ -18,10 +13,20 @@
 }
 
 .logoutbutton {
-  background-color: #ff5733; /* Kolor przycisku (możesz dostosować) */
+  background-color: #ff5733;
   color: white;
+  margin-left: 20px;
 }
 
 .logoutbutton:hover {
-  background-color: #ff471a; /* Zmiana koloru po najechaniu */
+  background-color: #ff471a;
+}
+
+.show-username {
+  color: whitesmoke;
+}
+
+mat-icon {
+  color: whitesmoke;
+  margin-right: 5px;
 }

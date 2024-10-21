@@ -1,29 +1,14 @@
 {
-  "contacts": [
-    {
-      "id": "0",
-      "name": "Nicola",
-      "phone": 123123123
-    },
-    {
-      "id": "1",
-      "name": "Michal",
-      "phone": 333666999
-    },
-    {
-      "id": "2",
-      "name": "Buba",
-      "phone": 111222333
-    }
-  ],
   "users": [
     {
       "id": "0",
+      "name": "Nicola",
       "login": "nicola",
       "password": "alocin"
     },
     {
       "id": "1",
+      "name": "Michał",
       "login": "michal",
       "password": "lachim"
     }
