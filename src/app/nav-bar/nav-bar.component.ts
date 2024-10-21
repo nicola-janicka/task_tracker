@@ -18,4 +18,6 @@ export class NavBarComponent {
     this.router.navigate(['/login-page']);
     localStorage.removeItem('logged');
   }
+
+  showUserLogin() {}
 }

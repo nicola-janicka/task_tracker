@@ -25,7 +25,14 @@
         required
       /> </mat-form-field
     ><br />
-    <button type="submit" mat-flat-button>Login</button>
+    <button
+      class="login-button"
+      type="submit"
+      mat-flat-button
+      [ngStyle]="{ 'background-color': '#3f51b5', color: 'white' }"
+    >
+      Login
+    </button>
   </form>
 </div>
 

@@ -53,6 +53,15 @@
         <td class="task-deadline">{{ dateToString(task.deadline) }}</td>
         <td class="task-action">
           <button
+            class="edit-button"
+            (click)="deleteTask(task.id, i)"
+            mat-mini-fab
+            aria-label="Icon button with an edit icon"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            class="delete-button"
             (click)="deleteTask(task.id, i)"
             mat-mini-fab
             aria-label="Icon button with a delete icon"
