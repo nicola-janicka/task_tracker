@@ -15,27 +15,6 @@
   ],
   "tasks": [
     {
-      "id": "1",
-      "userID": 0,
-      "name": "Task 1",
-      "status": "To do",
-      "deadline": 172247899000
-    },
-    {
-      "id": "2",
-      "userID": 0,
-      "name": "Task 1",
-      "status": "To do",
-      "deadline": 172247899000
-    },
-    {
-      "id": "3",
-      "userID": 0,
-      "name": "Task 1",
-      "status": "To do",
-      "deadline": 172247899000
-    },
-    {
       "id": "4",
       "userID": 0,
       "name": "Task 1",

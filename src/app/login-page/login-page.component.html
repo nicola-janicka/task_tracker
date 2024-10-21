@@ -1,5 +1,11 @@
 <div class="login-form">
-  <h2>Login</h2>
+  <div class="main-logo">
+    <img
+      src="https://img.freepik.com/darmowe-wektory/plaska-tablica-zadan-scrum-z-kolorowymi-notatkami-papierowymi_88138-931.jpg?t=st=1729519696~exp=1729523296~hmac=e9b0216408749a580a55bd00e2393ab69c9411ece05a29a460ada3124d037208&w=2000"
+      alt="task table picture"
+    />
+  </div>
+  <h3>Task tracker</h3>
 
   <form (ngSubmit)="onSubmit()">
     <mat-form-field>
@@ -34,6 +40,7 @@
       Login
     </button>
   </form>
+  <div class="sign-up">Don't have an account? <a href="">Sign up</a></div>
 </div>
 
 <router-outlet></router-outlet>

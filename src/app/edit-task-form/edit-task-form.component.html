@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Edit your task</h1>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <label>Task</label>
+    <input matInput [(ngModel)]="data.taskName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="data.taskStatus" name="status">
+      @for (status of statuses; track status) {
+      <mat-option [value]="status.viewValue">{{ status.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <label>Choose a date</label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="data.taskDeadline" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
+  </div>
+</div>

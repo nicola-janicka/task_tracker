@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewTaskFormComponent } from '../new-task-form/new-task-form.component';
 import { from } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { EditTaskFormComponent } from '../edit-task-form/edit-task-form.component';
 
 @Component({
   selector: 'app-task-table',
@@ -90,6 +91,38 @@ export class TaskTableComponent {
   createNewTask() {
     // this.tasks.push(new Task('Task', 'To do', new Date(1722958199000)));
     console.log('Hello');
+  }
+
+  openEditDialog(task: Task): void {
+    let dialogRef = this.dialog.open(EditTaskFormComponent, {
+      width: '250px',
+      data: {
+        taskName: task.name,
+        taskStatus: task.status,
+        taskDeadline: task.deadline,
+      },
+    });
+    dialogRef.afterClosed().subscribe(
+      (result) => {
+        result.taskDeadline.getMilliseconds();
+        this.taskService
+          .addTask(result.taskName, result.taskStatus, result.taskDeadline)
+          .subscribe((response) => {});
+        this.taskService.getTasks2().subscribe((value: any) => {
+          this.tasks = value;
+          console.log('Tasks:', value);
+        });
+      }
+
+      // this.tasks.push(
+      //   new Task(
+      //     result.id,
+      //     result.taskName,
+      //     result.taskStatus,
+      //     result.taskDeadline
+      //   )
+      // );
+    );
   }
 }
 

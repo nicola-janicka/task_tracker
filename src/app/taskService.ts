@@ -17,16 +17,18 @@ export class TaskService {
       .pipe(map((data: any) => this.getTasksFromResponse(data)));
   }
 
-  // private getTasksFromResponse(data: any) {
-  //   return data.flatMap((person: any) => this.getTasksFromPerson(person));
-  // }
-
   private getTasksFromResponse(data: any) {
     return data.map((task: any) => this.createNewTask(task));
   }
 
   private createNewTask(task: any) {
-    return new Task(task.id, task.name, task.status, new Date(task.deadline));
+    return new Task(
+      task.id,
+      task.userID,
+      task.name,
+      task.status,
+      new Date(task.deadline)
+    );
   }
 
   // USUWANIE ZADAŃ:
@@ -45,20 +47,11 @@ export class TaskService {
     let jsonTask = JSON.stringify(task);
     return this.http.post('http://localhost:3000/tasks', jsonTask);
   }
+
+  editTask(editedTask: Task): Observable<any> {
+    return this.http.put(
+      'http://localhost:3000/tasks/' + editedTask.id,
+      editedTask.getJSONString()
+    );
+  }
 }
-
-// tasks = Task[(task1, task2, task3)];
-
-// function sortTasks(tasks: Task[]): Task[] {
-//   let newTasks: Task[] = [];
-//   tasks.forEach((task) => {
-//     if (task.status === 'to do') {
-//       newTasks.unshift(task);
-//     } else {
-//       newTasks.push(task);
-//     }
-//   });
-//   return newTasks;
-// }
-
-// tasks = sortTasks(tasks);
