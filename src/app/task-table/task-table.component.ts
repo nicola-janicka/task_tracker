@@ -104,13 +104,12 @@ export class TaskTableComponent {
     });
     dialogRef.afterClosed().subscribe(
       (result) => {
-        result.taskDeadline.getMilliseconds();
-        this.taskService
-          .addTask(result.taskName, result.taskStatus, result.taskDeadline)
-          .subscribe((response) => {});
-        this.taskService.getTasks2().subscribe((value: any) => {
-          this.tasks = value;
-          console.log('Tasks:', value);
+        (task.name = result.taskName),
+          (task.status = result.taskStatus),
+          (task.deadline = result.taskDeadline);
+
+        this.taskService.editTask(task).subscribe((value) => {
+          console.log(value);
         });
       }
 
