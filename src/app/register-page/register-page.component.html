@@ -1,13 +1,19 @@
 <div class="login-form">
-  <div class="main-logo">
-    <img
-      src="https://img.freepik.com/darmowe-wektory/plaska-tablica-zadan-scrum-z-kolorowymi-notatkami-papierowymi_88138-931.jpg?t=st=1729519696~exp=1729523296~hmac=e9b0216408749a580a55bd00e2393ab69c9411ece05a29a460ada3124d037208&w=2000"
-      alt="task table picture"
-    />
-  </div>
-  <h3>Task tracker</h3>
+  <h3>Sign up</h3>
 
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="submitSignUpForm()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        required
+      /> </mat-form-field
+    ><br />
+
     <mat-form-field>
       <mat-label>Login</mat-label>
       <input
@@ -37,11 +43,11 @@
       mat-flat-button
       [ngStyle]="{ 'background-color': '#3f51b5', color: 'white' }"
     >
-      Login
+      Sign up
     </button>
   </form>
-  <div class="sign-up" (click)="openSignUpForm()">
-    Don't have an account? <button class="sign-up-button">Sign up</button>
+  <div class="sign-up" (click)="goBackToLoginPage()">
+    Go back to <button class="sign-up-button">login page</button>
   </div>
 </div>
 

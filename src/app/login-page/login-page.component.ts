@@ -45,6 +45,10 @@ export class LoginPageComponent {
       this._snackBar.open('login or password is incorrect', 'OK');
     }
   }
+
+  openSignUpForm() {
+    this.router.navigate(['/register-page']);
+  }
 }
 
 async function getUser(username: string, password: string): Promise<number> {
