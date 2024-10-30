@@ -36,7 +36,7 @@
       "deadline": 172247899000
     },
     {
-      "id": "6",
+      "id": "7",
       "userID": 1,
       "name": "Task 1",
       "status": "To do",
@@ -48,41 +48,6 @@
       "name": "Task 1",
       "status": "To do",
       "deadline": 172247899000
-    },
-    {
-      "id": "e872",
-      "name": "Task 666",
-      "status": "In progress",
-      "deadline": "2024-10-23T22:00:00.000Z",
-      "userID": "0"
-    },
-    {
-      "id": "8d15",
-      "userID": "0",
-      "name": "Lalalala",
-      "status": "In progress",
-      "deadline": "2024-10-17T18:56:34.056Z"
-    },
-    {
-      "id": "024d",
-      "name": "Task 455",
-      "status": "To do",
-      "deadline": "2024-10-22T22:00:00.000Z",
-      "userID": "0"
-    },
-    {
-      "id": "1da4",
-      "name": "Zakupy",
-      "status": "To do",
-      "deadline": "2024-11-14T23:00:00.000Z",
-      "userID": "0"
-    },
-    {
-      "id": "ebf2",
-      "name": "Task 2",
-      "status": "To do",
-      "deadline": "1975-06-17T14:38:19.000Z",
-      "userID": "0"
     }
   ]
 }

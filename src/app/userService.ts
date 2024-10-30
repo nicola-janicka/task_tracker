@@ -13,6 +13,24 @@ export class userService {
       .get('http://localhost:3000/users/' + localStorage.getItem('logged'))
       .pipe(map((data: any) => data));
   }
+
+  addNewUser(
+    inputName: string,
+    inputLogin: string,
+    inputPassword: string
+  ): Observable<any> {
+    let newUser = {
+      name: inputName, // "michal"
+      login: inputLogin, // "iamjustmike"
+      password: inputPassword, // "NicolaJestSuper"
+    };
+
+    return this.http.post(
+      'http://localhost:3000/users',
+      JSON.stringify(newUser)
+    );
+  }
+
   // private getIDFromResponse(data: any) {
   //   return data.map((userID: any) => this.createNewUserID());
   // }

@@ -6,6 +6,7 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { userService } from '../userService';
 
 @Component({
   selector: 'app-register-page',
@@ -25,11 +26,18 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register-page.component.css',
 })
 export class RegisterPageComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: userService) {}
+  name = '';
   username = '';
   password = '';
 
-  submitSignUpForm() {}
+  submitSignUpForm() {
+    this.userService
+      .addNewUser(this.name, this.username, this.password)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
 
   goBackToLoginPage() {
     this.router.navigate(['/login-page']);

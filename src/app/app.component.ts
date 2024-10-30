@@ -41,7 +41,7 @@ export class AppComponent {
     }
     this.router.events.subscribe((value) => {
       if (value instanceof NavigationEnd) {
-        if (value.url === '/login-page' || '/register-page') {
+        if (value.url === '/login-page' || value.url === '/register-page') {
           this.showNavBar = false;
         } else {
           this.showNavBar = true;
