@@ -27,9 +27,9 @@ import { userService } from '../userService';
 })
 export class RegisterPageComponent {
   constructor(private router: Router, private userService: userService) {}
-  name = '';
-  username = '';
-  password = '';
+  name = ''; // Mike
+  username = ''; // iamsjustmike
+  password = ''; // blabla
 
   submitSignUpForm() {
     this.userService

@@ -20,9 +20,9 @@ export class userService {
     inputPassword: string
   ): Observable<any> {
     let newUser = {
-      name: inputName, // "michal"
-      login: inputLogin, // "iamjustmike"
-      password: inputPassword, // "NicolaJestSuper"
+      name: inputName,
+      login: inputLogin,
+      password: inputPassword,
     };
 
     return this.http.post(

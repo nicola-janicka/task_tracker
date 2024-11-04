@@ -33,17 +33,17 @@ export class AppComponent {
   showNavBar = false;
 
   constructor(private router: Router) {
-    if (localStorage.getItem('logged') === null) {
-      this.router.navigate(['/login-page']);
-      console.log('works');
-    } else {
-      this.router.navigate(['/task-table']);
-    }
     this.router.events.subscribe((value) => {
       if (value instanceof NavigationEnd) {
-        if (value.url === '/login-page' || value.url === '/register-page') {
-          this.showNavBar = false;
-        } else {
+        if (value.url != '/admin') {
+          if (localStorage.getItem('logged') === null) {
+            this.router.navigate(['/login-page']);
+            console.log('works');
+          } else {
+            this.router.navigate(['/task-table']);
+          }
+        }
+        if (value.url === '/task-table') {
           this.showNavBar = true;
         }
       }

@@ -1,0 +1,42 @@
+<div class="login-form">
+  <div class="main-logo">
+    <img src="" alt="" />
+  </div>
+  <h3>Task tracker admin panel</h3>
+
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Login</mat-label>
+      <input
+        matInput
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        required
+      /> </mat-form-field
+    ><br />
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      /> </mat-form-field
+    ><br />
+    <button
+      class="login-button"
+      type="submit"
+      mat-flat-button
+      [ngStyle]="{ 'background-color': '#3f51b5', color: 'white' }"
+    >
+      Login
+    </button>
+  </form>
+</div>
+
+<router-outlet></router-outlet>

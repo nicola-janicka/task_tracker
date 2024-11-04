@@ -8,9 +8,15 @@
     },
     {
       "id": "1",
-      "name": "Michał",
-      "login": "michal",
-      "password": "lachim"
+      "name": "Ola",
+      "login": "ola",
+      "password": "alo"
+    },
+    {
+      "id": "e8ef",
+      "name": "Ala",
+      "login": "ala",
+      "password": "ala"
     }
   ],
   "tasks": [
@@ -48,6 +54,13 @@
       "name": "Task 1",
       "status": "To do",
       "deadline": 172247899000
+    }
+  ],
+  "admin_users": [
+    {
+      "id": "0",
+      "login": "admin",
+      "password": "nimda"
     }
   ]
 }
