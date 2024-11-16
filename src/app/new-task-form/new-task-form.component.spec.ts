@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewTaskFormComponent } from './new-task-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('NewTaskFormComponent', () => {
   let component: NewTaskFormComponent;
@@ -8,7 +9,7 @@ describe('NewTaskFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NewTaskFormComponent],
+      imports: [NewTaskFormComponent, MatDialogModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NewTaskFormComponent);
