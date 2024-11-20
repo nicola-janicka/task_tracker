@@ -1,0 +1,68 @@
+mat-dialog-actions {
+  display: flex;
+  justify-content: center; /* Wyrównanie przycisków do prawej */
+  align-items: center; /* Wyrównanie pionowe w jednej linii */
+  margin-top: 20px;
+  width: 100%; /* Pełna szerokość kontenera */
+  gap: 20px;
+}
+
+mat-dialog-actions button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px; /* Wewnętrzne odstępy w przycisku */
+  border-radius: 4px; /* Zaokrąglone rogi */
+  display: inline-block; /* Przyciski ustawione jako blok w linii */
+}
+
+button.cancel-button {
+  background-color: #e53935; /* Intensywnie czerwony kolor */
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px; /* Zaokrąglone rogi */
+  transition: all 0.3s ease; /* Płynne przejście przy hoverze */
+}
+
+button.cancel-button:hover {
+  background-color: #d32f2f; /* Ciemniejszy odcień czerwieni */
+}
+
+button.add-button {
+  background-color: #3f51b5; /* Fioletowy kolor */
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px; /* Zaokrąglone rogi */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Efekt podniesienia */
+  transition: all 0.3s ease; /* Płynne przejście przy hoverze */
+  margin-left: 20px;
+}
+
+button.add-button:hover {
+  background-color: #2c3e9f; /* Ciemniejszy odcień fioletu */
+}
+
+mat-form-field {
+  width: 100%; /* Ustawia szerokość na pełną szerokość rodzica */
+  max-width: 400px; /* Opcjonalnie ogranicza maksymalną szerokość */
+  margin-bottom: 15px; /* Dodaje odstęp między polami */
+}
+
+mat-form-field input,
+mat-form-field select,
+mat-form-field textarea {
+  font-family: "Roboto", sans-serif; /* Zachowaj spójność czcionki */
+  font-size: 16px;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column; /* Ustawia pola jeden pod drugim */
+  align-items: center; /* Wyrównanie do środka */
+  width: 100%;
+}
+
+mat-dialog-content mat-form-field {
+  margin-bottom: 20px; /* Większy odstęp między polami */
+}
