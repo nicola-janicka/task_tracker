@@ -12,7 +12,7 @@ export class TaskService {
   getTasks2(): Observable<Task[]> {
     return this.http
       .get(
-        'http://localhost:3000/tasks?userID=' + localStorage.getItem('logged')
+        'http://localhost:3001/tasks?userID=' + localStorage.getItem('logged')
       )
       .pipe(map((data: any) => this.getTasksFromResponse(data)));
   }
